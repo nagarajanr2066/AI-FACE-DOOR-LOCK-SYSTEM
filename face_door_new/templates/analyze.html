@@ -1,0 +1,166 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Door Access</title>
+	<link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/templatemo-xtra-blog.css" rel="stylesheet">
+<!--
+    
+TemplateMo 553 Xtra Blog
+
+https://templatemo.com/tm-553-xtra-blog
+
+-->
+</head>
+<body>
+	
+   
+                       
+            <div class="row tm-row">
+                <article class="col-12 col-md-6 tm-post">
+                    <hr class="tm-hr-primary">
+                    <!--<a href="post.html" class="effect-lily tm-post-link tm-pt-60">   class="tm-post-link-inner"-->
+                        <div>
+                            
+							
+							
+							{% if act=="1" %}
+							<h3>Face Detected</h3>
+							<img src="../static/photo/{{fn}}" width="100" height="100">
+							
+							<div align="center"><iframe src="/cap" width="500" height="500" frameborder="0"></iframe>
+							<iframe src="http://localhost/door/test1.php" width="100" height="100" frameborder="0"></iframe>
+							<script>
+							//Using setTimeout to execute a function after 5 seconds.
+							setTimeout(function () {
+							   //Redirect with JavaScript
+							 window.location.href="/analyze?act=2&fn={{fn}}";
+							}, 2000);
+							</script> 
+							{% endif %}
+							
+							<iframe src="http://localhost/door/test2.php" width="100" height="100" frameborder="0"></iframe>
+							
+							{% if act=="2" %}
+							
+							<img src="../static/photo/{{fn}}" width="100" height="100">
+							<h3>{{msg}}</h3>
+							
+							
+							
+								{% if dst=="1" %}
+								<script>
+								//Using setTimeout to execute a function after 5 seconds.
+								setTimeout(function () {
+								   //Redirect with JavaScript
+								 window.location.href="/analyze?act=3&fn={{fn}}";
+								}, 2000);
+								</script> 
+								{% else %}
+								<script>
+								//Using setTimeout to execute a function after 5 seconds.
+								setTimeout(function () {
+								   //Redirect with JavaScript
+								 window.location.href="/analyze?act=2&fn={{fn}}";
+								}, 2000);
+								</script> 
+								{% endif %}
+								
+								
+							{% endif %}
+							
+							
+							{% if act=="3" %}
+							<img src="../static/photo/{{fn}}" width="100" height="100">
+							<h3>{{msg}}</h3>
+							<h3>Door Open</h3>
+<script>
+//Using setTimeout to execute a function after 5 seconds.
+setTimeout(function () {
+   //Redirect with JavaScript
+ window.location.href="/analyze?act=4&fn={{fn}}";
+}, 2000);
+</script> 
+							{% endif %}    
+							
+							{% if act=="4" %}
+							<img src="../static/photo/{{fn}}" width="100" height="100">
+							<h3>{{msg}}</h3>
+							<h3>Door Open</h3>
+							<h3>Done!!!</h3>
+{% if dst=="1" %}
+<script>
+//Using setTimeout to execute a function after 5 seconds.
+setTimeout(function () {
+   //Redirect with JavaScript
+ window.location.href="/page";
+}, 5000);
+</script> 
+{% endif %}
+							{% endif %}     
+							
+						
+							
+							
+							{% if dst=="3" or dst=="4" %}
+							
+							<script>
+//Using setTimeout to execute a function after 5 seconds.
+//setTimeout(function () {
+   //Redirect with JavaScript
+/// window.location.href="/page";
+//}, 5000);
+</script> 
+
+							{% endif %}
+							
+							
+							
+							
+							
+							       
+                        </div>
+                       <!-- <span class="position-absolute tm-new-badge">New</span>-->
+                       <!-- <h2 class="tm-pt-30 tm-color-primary tm-post-title">Face Verification</h2>-->
+                    <!--</a>-->                    
+                    
+                    
+                    <hr>
+                    
+                </article>
+                <article class="col-12 col-md-6 tm-post">
+                    <hr class="tm-hr-primary">
+                    <!--<a href="post.html" class="effect-lily tm-post-link tm-pt-60">  class=" tm-post-link-inner"-->
+                        <div >
+						{% if act=="1" or act=="2" %}
+                           <h3>Door Closed</h3>
+                       
+                        {% endif %}
+						
+						{% if act=="3" or act=="4" or dst=="3" or dst=="4" %}
+                           <h3>Door Opened</h3>
+                       {% endif %}
+                        
+						
+						
+						</div>
+                        <!--<span class="position-absolute tm-new-badge">New</span>-->
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">Home Door</h2>
+                   <!-- </a>    -->                
+                   
+                </article>
+               
+                
+               
+            </div>
+            
+            
+        </main>
+    </div>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/templatemo-script.js"></script>
+</body>
+</html>
